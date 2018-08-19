@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>13垂直滚动轮播图</title>
+	<style>
+		ul{list-style: none;padding:0;margin:0;}
+		.carousel{position:relative;width:320px;height:320px;overflow: hidden;}
+		.carousel ul{position: absolute;left:0;top:0;}
+		.carousel img{display: block;}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded',()=>{
+			/*
+				盒模型属性
+					* offset
+						* offsetLeft
+						* offsetTop
+						* offsetWidth
+						* offsetHeight
+					* client
+						* clientLeft
+						* clientTop
+						* clientWidth	**
+						* clientHeight	**
+			 */
+			let carousel = document.querySelector('.carousel');
+			let ul = carousel.children[0];
+
+
+			// 默认索引值
+			let index = 0;
+
+
+			// 初始化:动画效果
+			let timer = setInterval(autoPlay,3000);
+
+
+			// 鼠标移入移出
+			carousel.onmouseover = function(){
+				clearInterval(timer);
+			}
+
+			carousel.onmouseout = function(){
+				timer = setInterval(autoPlay,3000);
+			}
+
+			function autoPlay(){
+
+				index++;
+
+				// 终点判断
+				if(index>=ul.children.length){
+					index = 0;
+				}
+
+				let target = -index*carousel.clientHeight;
+
+
+				animate(ul,{top:target});
+				// ul.style.top = -target + 'px';
+			}
+		})
+	</script>
+</head>
+<body>
+	<div class="carousel">
+		<ul>
+			<li><img src="img/g1.jpg" alt=""></li>
+			<li><img src="img/g2.jpg" alt=""></li>
+			<li><img src="img/g3.jpg" alt=""></li>
+			<li><img src="img/g4.jpg" alt=""></li>
+			<li><img src="img/g5.jpg" alt=""></li>
+		</ul>
+	</div>
+	<!-- <div class="box" style="position: absolute;left:0;top:0;width:200px;height:100px;background-color: #f00"></div> -->
+</body>
+</html>

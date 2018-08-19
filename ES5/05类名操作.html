@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04类名操作</title>
+	<style>
+		.hide{display: none;}
+	</style>
+	<script>
+		/*
+			className: String
+			classList: Object
+				* length : class类名的个数
+				* add() : 添加class方法
+				* remove() : 删除class方法
+				* toggle() : 切换class方法
+				* contains():是否含有某个类,返回布尔值
+
+		 */
+		document.addEventListener('DOMContentLoaded',function(){
+			var box = document.querySelector('#box');
+
+			var className = box.className;//
+			console.log(className);
+
+
+			// 添加一个类title
+			// strng->array->indexOf->push
+			// box.className = className+ ' title'
+
+			box.classList.add('box','title');
+		});
+	</script>
+</head>
+<body>
+	<div id="box" class="box content"></div>
+</body>
+</html>

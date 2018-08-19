@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04对象扩展</title>
+	<script>
+		/*
+			函数的简写:箭头函数
+				* 选择性省略:function,{},(),renturn
+				* 箭头函数中的this
+					* 箭头函数没有this
+		 */
+			// function sum(){}
+			var sum = function(){
+				return 100
+			}
+
+			// 零个参数用 () 表示
+			// function,{},return
+			var sum = ()=>100;
+
+			// 函数只有一个参数（可省略括号）
+			//传统函数写法
+			var test = function(x){
+			    return x+2;
+			} 
+
+			// 简写
+			// 省function,(),{},return
+			var text = x=>x+2;
+
+			// 多个参数
+			var arr = [10,20,30];
+			arr.map(function(item,idx,arr){
+					return item*idx
+			});
+			// 简写
+			arr.map((item,idx,arr)=>item*idx);
+
+			var total = arr.reduce(function (a, b) {
+				a +=10;
+				b +=20;
+			  return a + b;
+			}, 0);
+			// 简写
+			var total = arr.reduce((a,b)=>{
+				a +=10
+				b += 20
+				return a+b;
+			});
+
+			// 返回一个对象的简写
+			// ES6中的规则是，紧随箭头的{被解析为块的开始，而不是对象的开始
+			var person = function(name,age,gender){
+				return {
+					name,
+					age,
+					gender
+				}
+			}
+
+			var person = (name,age,gender)=>({
+					name,
+					age,
+					gender
+				});
+
+
+			// 箭头函数中的this
+			document.onclick = function(){
+				setTimeout(()=>{
+					console.log(this)
+
+				},100)
+			}
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

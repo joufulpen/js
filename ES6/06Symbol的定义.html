@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06Symbol的定义</title>
+	<script>
+		/*
+			Symbol特性
+				* 独一无二
+				* 不可修改
+				* 不可运算
+			定义:
+				* var s = Symbol
+		 */
+		
+		 // 定义方式1
+		 // 缺点:无法识别
+		var s1 = Symbol();
+		var s2 = Symbol();
+
+		console.log(s1 , s2);
+
+		// 定义方式2
+		// 添加参数:识别
+		var s3 = Symbol('laoxie');
+		var s4 = Symbol('lemon');
+		console.log(s3===s4);
+
+
+		// 定义方式3
+		// Symbol.for():登记
+		// 搜索已登记的Symbol值
+		// * 有:直接返回这个Symbol值
+		// * 无:创建新的Symbol值
+		var s5 = Symbol.for('tiantian');//创建
+		var s6 = Symbol.for('tiantian');//返回
+		console.log(s5===s6);//s5和s6为同一个Symbol值
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

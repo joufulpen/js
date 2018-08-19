@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10Map映射</title>
+	<script>
+		/*
+			Map映射(key/value):
+				* 增强对象
+			定义:
+				* 构造函数 new Map()
+			方法:
+				* set()
+				* get()
+				* has()
+				* delete()
+				* clear()
+				* values()
+				* keys()
+				* entries()
+			遍历:
+				* forEach()
+				* for...of
+		 */
+		
+		// 空的映射
+		 var map = new Map();
+
+		 map.set('name','laoxie');
+		 map.set([1,2,3],[10,20,30]);
+		 map.set({show:true},{name:'laoxie',age:18});
+
+		 console.log(map);
+
+
+		 // 获取键
+		 var keys = Array.from(map.keys());
+		 var vals = Array.from(map.values());
+
+		 console.log(keys);
+		 console.log(vals);
+
+
+		 map.forEach((key,value,map)=>{
+		 	// key:键
+		 	// value:值
+		 	// map:映射的引用
+		 	// console.log(map)
+		 });
+
+
+		 // for(let item of map){
+		 	// let item = [key,value]
+		 for(let [key,value] of map){
+		 	console.log(key,value)
+		 }
+	</script>
+</head>
+<body>
+	<h1>Map映射</h1>
+</body>
+</html>

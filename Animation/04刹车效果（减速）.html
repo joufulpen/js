@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02飞翔的小鸟（匀速）</title>
+	<style>
+		/*.bb{position: absolute;left:50%;top:0;margin-left:-100px;width:200px;}*/
+		.car{position: absolute;left:0;bottom:0;width:200px;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',()=>{
+			/*
+				动画类型
+					* 匀速运动
+						* 速度不改变的运动
+						* 案例:飞翔的小鸟(不断改变left值)
+						* 扩展:
+							* 如何从另一侧飞入
+							* 如何反向飞回
+					* 加速运动
+						* 速度不断增加的运动
+						* 案例:篮球自由落体(不断改变top)
+						* 扩展:
+							* 反弹
+					* 减速运动
+						* 速度不断减小的运动
+						* 案例:刹车效果（不断改变left）
+					* 抛物线运动
+					* 圆周运动
+			 */
+			
+			let car = document.querySelector('.car');
+
+			// 初始速度
+			let speed = 120;
+
+			let timer = setInterval(()=>{
+				// 获取当前left
+				let left = car.offsetLeft;
+
+				// 减速运动
+				speed -= 10;
+
+				// 速度为0时停车
+				if(speed <= 0){
+					clearInterval(timer);
+					speed = 0;
+				}
+
+				left += speed;
+
+
+				car.style.left = left + 'px';
+			},30)
+			
+		})
+	</script>
+</head>
+<body>
+	<img src="img/car.jpg" class="car" />
+</body>
+</html>

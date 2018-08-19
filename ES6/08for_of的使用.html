@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08for_of的使用</title>
+	<script>
+		/*
+			08for_of的使用
+				* 综合了for循环与forEach方法的优点
+		 */
+		var arr = [10,20,30,40,50];
+
+		for(var i=0;i<arr.length;i++){
+			// 优点:随意退出break,continue
+			// 缺点:必须得到索引值才可以获取对应的数组元素:arr[i]
+		}
+
+		arr.forEach((item,idx,arr)=>{
+			// 优点:直接获取数组元素
+			// 缺点:无法随意退出
+		});
+
+
+		// let [idx,item] = arr;
+		for(let idx of arr){
+			// 直接获取数组元素
+			console.log(idx);
+			// if(item >=30)
+			// break
+		}
+
+	</script>
+</head>
+<body>
+	<h1>08for_of的使用</h1>
+</body>
+</html>

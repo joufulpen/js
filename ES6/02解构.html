@@ -1,0 +1,83 @@
+a<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02解构</title>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			/*
+				02解构
+					* 数组
+					* 对象解构
+					* 结构失败:得到undefined
+						* 指定默认值:当解构失败是使用这个值
+			 */
+			// var a=10,b=20,c=30;
+			let obj = {
+				name:'lemon',
+				age:32,
+				gender:'女',
+				married:true
+			}
+
+			// 提取对象属性到变量
+			// let a=obj.name,b=obj.age,c=obj.gender,d=obj.married;
+			// 解构方式
+			// 声明4个变量,并赋值对象中的相应属性
+			let {name,age,gender,married,hobby} = obj;
+			console.log(name,age,gender,married,hobby);
+
+			// 声明myname,myage,mygender几个变量,并把对象中的name,age,gender属性值分别赋值给变量
+			let {name:myname,age:myage,gender:mygender} = obj;
+			console.log(myname,myage,mygender)
+
+			// 声明4个变量,并把数组中对象的值赋值给变量
+			let arr = [10,20,30,40];
+			let [a,b,c,d,e] = arr;
+			console.log(a,b,c,d,e);
+
+
+			// 解构用途
+			// 变量交换值
+			var x = 'laoxie';
+			var y = 'lemon';
+			console.log(x,y);
+
+			var [x,y] = [y,x];
+			console.log(x,y);
+
+
+			// 函数返回值
+			function example(){
+			     return [1,2,3]
+			}
+
+			//接收
+			var [x,y,z] = example();
+
+
+			// 函数参数(重点)
+			function test1({x,y,z}){
+				// let {x,y,z} = {x:10,y:20,z:30}
+				// obj.x,obj.y,obj.z
+
+			}
+
+			//传参
+			test({x:10,y:20,z:30})
+
+			//参数可以设置默认值
+			function test2({x=10,y=20,z}){
+				// let {x=10,y=20,z} = {y:22,z:33}
+			}
+			test2({y:22,z:33})
+
+
+			
+		})
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

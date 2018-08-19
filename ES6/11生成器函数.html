@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11生成器函数</title>
+	<script>
+		/*
+			生成器函数
+				* 定义
+					function * sum(){}
+				* 执行:跟普通函数一致
+					* 不执行函数中额代码,而是返回一个暂停的对象
+						* next()
+						* value
+						* done
+				* 关键字
+					* return	终止函数的执行
+					* yield		暂停函数的执行
+						* 实现一个函数中返回多个值
+						* 配合传参+条件判断实现更强大的效果
+					
+		 */
+		
+		function* sum(){
+			console.log(0);
+			yield 100;
+			console.log(1);
+			yield 'laoxie';
+			console.log(2);
+			return 'lemon';
+			console.log(3)
+			yield 'tiantian';
+		}
+
+		// 得到一个暂停的对象(不会执行函数总的代码)
+		var res = sum();
+
+		// res.next() : 执行函数中的代码
+		// 遇到yield 则暂停,并返回对象{value:yield的返回值,done:函数是否执行完毕}
+		console.log(res);
+	</script>
+</head>
+<body>
+	<h1>生成器函数</h1>
+</body>
+</html>

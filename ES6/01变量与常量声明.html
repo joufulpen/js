@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01变量与常量声明</title>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			/*
+				var的缺点:
+					* 会被覆盖
+					* 在事件中无法直接获取循环的i值
+				let
+					* let不允许相同作用域内多次声明同一变量
+					* 块级作用域
+					* 变量声明不会提前
+				const 常量声明
+					* let不允许相同作用域内多次声明同一常量
+					* 块级作用域
+					* 变量声明不会提前
+					* 不可修改
+					* 约定:
+						* 全大写
+						* 多个单词间用下划线连接
+			 */
+			console.log(num);
+			var num = 10;
+			var num = 'laoxie';
+
+
+			var btns = document.querySelectorAll('button')
+			/* 
+			var i=0;
+			for(var i=0;i<btns.length;i++){
+				(function(i){
+					btns[i].onclick = function(){
+						console.log(i)
+					}
+
+				})(i);
+			}*/
+
+			// console.log(num1)
+			let num1 = 10;
+			// let num1 = 'laoxie'
+			// let num = 100;
+
+			for(let i=0;i<btns.length;i++){
+				// let i=0;
+				btns[i].onclick = function(){
+					console.log(i)
+				}
+			}
+
+
+			// 常量声明
+			const MY_NAME = 'laoxie';
+			MY_NAME = 'lemon';
+
+			console.log(MY_NAME)
+			
+		})
+	</script>
+</head>
+<body>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+</body>
+</html>

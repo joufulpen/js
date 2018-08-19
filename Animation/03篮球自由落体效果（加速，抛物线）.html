@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02飞翔的小鸟（匀速）</title>
+	<style>
+		body{background-color: #000;}
+		/*.bb{position: absolute;left:50%;top:0;margin-left:-100px;width:200px;}*/
+		.bb{position: absolute;left:0;top:0;width:200px;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',()=>{
+			/*
+				动画类型
+					* 匀速运动
+						* 速度不改变的运动
+						* 案例:飞翔的小鸟(不断改变left值)
+						* 扩展:
+							* 如何从另一侧飞入
+							* 如何反向飞回
+					* 加速运动
+						* 速度不断增加的运动
+						* 案例:篮球自由落体(不断改变top)
+						* 扩展:
+							* 反弹
+					* 减速运动
+					* 抛物线运动
+					* 圆周运动
+			 */
+			
+			let bb = document.querySelector('.bb');
+
+			let speed = 0;
+			let h_speed = 60;
+			
+			let timer  = setInterval(()=>{
+				// 获取当前值
+				let top = bb.offsetTop
+				let left = bb.offsetLeft
+
+				speed += 5;
+
+				top += speed;
+				left += h_speed;
+
+				// 终点判断
+				if(top > window.innerHeight-bb.offsetHeight){
+					clearInterval(timer);
+
+					// 重置目标值
+					top = window.innerHeight-bb.offsetHeight;
+				}
+				
+				bb.style.top = top + 'px';
+				bb.style.left =left + 'px'
+			},30);
+			
+			
+		})
+	</script>
+</head>
+<body>
+	<img src="img/basketball.jpg" class="bb" />
+</body>
+</html>

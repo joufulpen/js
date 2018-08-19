@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04类名操作</title>
+	<style>
+		.hide{display: none;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			/*
+				data-*:自定义属性操作(获取/设置)
+					* getAttribute('dataa-*')
+					* dataset: Object
+
+			 */
+			
+			var box = document.querySelector('#box');
+			console.log(box.dataset.myname,box.dataset.firstName)
+			box.dataset.myage = 18;
+			box.dataset.myTile = 998;
+		
+		});
+	</script>
+</head>
+<body>
+	<div id="box" class="box content" data-myname="xxx" data-title="666" data-first-name="lemon"></div>
+</body>
+</html>

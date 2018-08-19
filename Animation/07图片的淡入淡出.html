@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07图片的淡入淡出</title>
+	<style>
+		.meinv{opacity: 0.5;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',()=>{
+			/*
+				
+			 */
+			let meinv = document.querySelector('.meinv');
+
+			let timer
+
+			meinv.onmouseover = ()=>{
+				// 0.5->1
+
+				// 清除onmouseout的timer
+				clearInterval(timer);
+
+				// 目标值
+				let target = 1;
+
+				timer = setInterval(()=>{
+					// 获取当前值
+					let current = getComputedStyle(meinv).opacity*1;
+
+					// // 计算缓冲速度
+					// let speed = (target-current)/10
+
+					// speed = speed < 0.05 ? 0.05 : speed
+					speed = 0.05;
+
+					let opacity = current + speed;console.log(opacity)
+
+					if(current >= target){
+						clearInterval(timer);
+
+						opacity = target;
+					}
+
+					meinv.style.opacity = opacity;
+
+				},30)
+			}
+
+
+			meinv.onmouseout = ()=>{
+				// 1->0.5
+				// 清除onmouseover的timer
+				clearInterval(timer);
+				
+				// 目标值
+				let target = 0.5;
+
+				timer = setInterval(()=>{
+					// 获取当前值
+					let current = getComputedStyle(meinv).opacity*1;
+
+					// // 计算缓冲速度
+					// let speed = (target-current)/10
+
+					// speed = speed < 0.05 ? 0.05 : speed
+					speed = -0.05;
+
+					let opacity = current + speed;
+					if(current <= target){
+						clearInterval(timer);
+
+						opacity = target;
+					}
+
+					meinv.style.opacity = opacity;
+
+				},30)
+			}
+		})
+	</script>
+</head>
+<body>
+	<img src="img/g1.jpg" class="meinv">
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01回调函数</title>
+	<script>
+		/*
+			01回调函数：执行过程9
+				* typeof
+		 */
+		function show(num){
+			// var num = function(){}
+			// var num = 10;
+			console.log(num);
+
+			// 调用传入的函数
+			if(typeof num === 'function'){
+				num('123');
+				
+			}
+
+			return 666;
+
+			// 这里的代码不会执行
+		}
+
+
+		console.log(show(10));
+		show(function(name){//name为形参
+			//  var name = 'tiantian'
+			console.log('laoxie666' + ' -> ' + name);
+		})
+
+		show()
+
+		var num = function(name){//name为形参
+			//  var name = 'tiantian'
+			console.log('laoxie666' + ' -> ' + name);
+		}
+
+		function(name){//name为形参
+			//  var name = 'tiantian'
+			console.log('laoxie666' + ' -> ' + name);
+		}
+	</script>
+</head>
+<body>
+	<h1>01回调函数</h1>
+</body>
+</html>
+
+
+
+
+
+function aa(a,callback){
+	console.log(a)
+
+	callback()
+
+}
+
+
+aa(1,function(){
+	console.log('执行结束了')
+})

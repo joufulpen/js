@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03字符串扩展</title>
+	<script>
+		/*
+			* 方法扩展
+				* includes(keyword)  返回true,boolean
+				* startsWith(keyword)
+				* endsWith(keyword)
+				* repeat(n)
+			* 字符串模板
+				* `` 反引号
+				* 在字符串模板中使用变量:${}
+		 */
+		
+		document.write('<p>520 13 14</p>'.repeat(10));
+
+
+		var str = `<table>
+				<tbody>
+						<tr>
+								<td>1</td>
+								<td>2</td>
+								<td>3</td>
+								<td>4</td>
+						</tr>
+				</tbody>
+		</table>`;
+
+		console.log(str);
+
+		function randomColor(){
+			var r = Math.floor(Math.random()*256);
+			var g = Math.floor(Math.random()*256);
+			var b = Math.floor(Math.random()*256);
+			// return 'rgb('+r+','+g+','+b+')';
+
+			return `rgb(${r},${g},${b})`;
+		}
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+
+<script>	
+		document.body.style.backgroundColor = randomColor();
+</script>
+</html>

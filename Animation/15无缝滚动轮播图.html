@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>13垂直滚动轮播图</title>
+	<style>
+		ul{list-style: none;padding:0;margin:0;}
+		.carousel{position:relative;width:810px;height:320px;overflow: hidden;}
+		.carousel ul{position: absolute;left:0;top:0;overflow:hidden;}
+		.carousel li{float:left;}
+		.carousel img{display: block;}
+
+		.carousel > span{position: absolute;left:0;top:50%;width:50px;height:100px;line-height:100px;text-align:center;background-color: rgba(0,0,0,.3);color:#fff;transform: translate(0,-50%);}
+		.carousel .btnNext{left:auto;right:0;}
+
+		.carousel .page{position: absolute;left:0;right:0;bottom:10px;text-align:center;}
+		.carousel .page span{display: inline-block;margin:0 5px;width:20px;height:20px;text-align:center;line-height:20px;border-radius:50%;color:#666;background-color: #cfcfcf;font-size:10px;}
+		.carousel .page span.active{background-color: #f60;color:#fff;}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded',()=>{
+			/*
+				盒模型属性
+					* offset
+						* offsetLeft
+						* offsetTop
+						* offsetWidth
+						* offsetHeight
+					* client
+						* clientLeft
+						* clientTop
+						* clientWidth	**
+						* clientHeight	**
+			 */
+			let carousel = document.querySelector('.carousel');
+			let ul = carousel.children[0];
+
+			// 无缝滚动关键一:复制第一张到最后
+			ul.appendChild(ul.children[0].cloneNode(true));
+			
+			let len = ul.children.length;
+
+			// 初始化:
+			// 计算ul的宽度
+			// li的宽度*数量
+			ul.style.width = carousel.clientWidth * len + 'px';
+
+
+			// 默认索引值
+			let index = 0;
+
+
+			// 添加左右按钮
+			let btnPrev = document.createElement('span');
+			btnPrev.classList.add('btnPrev');
+			btnPrev.innerHTML = '&lt;';
+			let btnNext = document.createElement('span');
+			btnNext.classList.add('btnNext');
+			btnNext.innerHTML = '&gt;'
+			carousel.appendChild(btnPrev);
+			carousel.appendChild(btnNext);
+
+			// 添加页码
+			let page = document.createElement('div');
+			page.className = 'page';
+
+			var content = '';
+			// 往.page中添加页面
+			for(let i=0;i<len-1;i++){
+				content += `<span>${i+1}</span>`
+			}
+			page.innerHTML = content;
+			page.children[index].className = 'active';
+			// 把page写入页面
+			carousel.appendChild(page);
+
+
+
+			//动画效果
+			let timer = setInterval(autoPlay,3000);
+
+
+			// 鼠标移入移出
+			carousel.onmouseover = function(){
+				clearInterval(timer);
+			}
+
+			carousel.onmouseout = function(){
+				timer = setInterval(autoPlay,3000);
+			}
+
+			// 上一张下一张
+			carousel.onclick = e=>{
+				if(e.target.className === 'btnPrev'){
+					index--;
+					show();
+				}else if(e.target.className === 'btnNext'){
+					index++;
+					show();
+				}
+			}
+
+			function autoPlay(){
+
+				index++;
+
+				show();
+			}
+
+
+			function show(){
+				// 终点判断
+				if(index>=len){
+					// 无缝滚动关键2:当滚动完成复制图片时,瞬间重回初始状态
+					ul.style.left = 0;
+					index = 1;
+				}else if(index<0){
+					index = len - 1;
+				}
+
+				let target = -index*carousel.clientWidth;
+
+
+				animate(ul,{left:target});
+				// ul.style.top = -target + 'px';
+
+				// 高亮页码
+				for(let i=0;i<len-1;i++){
+					if(i===index){
+						page.children[i].className = 'active';
+					}else{
+						page.children[i].className = '';
+					}
+				}
+
+				if(index === len-1){
+					page.children[0].className = 'active';
+				}
+
+			}
+		})
+	</script>
+</head>
+<body>
+	<div class="carousel">
+		<ul>
+			<li><img src="img/001.jpg" alt=""></li>
+			<li><img src="img/002.jpg" alt=""></li>
+			<li><img src="img/003.jpg" alt=""></li>
+			<li><img src="img/004.jpg" alt=""></li>
+		</ul>
+	</div>
+	<!-- <div class="box" style="position: absolute;left:0;top:0;width:200px;height:100px;background-color: #f00"></div> -->
+</body>
+</html>

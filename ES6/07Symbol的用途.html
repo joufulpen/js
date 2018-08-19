@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06Symbol的用途</title>
+	<script>
+		/*
+			Symbol的用途
+				* 给对象创建私有属性
+				* 迭代器
+		 */
+		
+		// 利用Symbol创建不可修改的属性
+		// 私有属性:
+		// 	* 独一无二
+		// 	* 不可修改
+		var sym = Symbol('age');
+
+		var obj = {
+			name:'lemon',
+			age:32,
+			[sym]:'lemon的年龄为:32'
+		}
+
+		// lemon修改
+		obj.age = 18;
+		obj['Symbol(age)'] = 18;
+
+		// 泄露Symbol值对应的变量
+		obj[sym] = '你才32'
+
+		console.log(obj);
+
+
+		function createPerson(name,gender){
+			// var name=lemon,gender=女
+			var s = Symbol('age');
+			var obj = {
+				[s]:32,
+				name,
+				gender
+			}
+
+			return obj;
+			console.log(666);
+		}
+
+		var lemon = createPerson('lemon','女');
+		console.log(lemon);
+	</script>
+</head>
+<body>
+	<h1>Symbol的用途</h1>
+</body>
+</html>

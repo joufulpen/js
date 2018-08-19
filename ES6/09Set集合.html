@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Set集合</title>
+	<script>
+		/*
+		
+			Set集合，
+				* 类似于数组，但是成员的值都是唯一的，可自动去重
+				* 创建:构造函数Set
+				* 自动去重
+				* 增强数组的功能
+			* 用途:
+				* 数组去重
+			* 方法
+				* add(value)：添加某个值，返回Set结构本身。
+				* delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。
+				* has(value)：返回一个布尔值，表示Set集合中是否存在该值。
+				* clear()：清除所有成员，没有返回值。
+			* 遍历
+				* for..of
+		 */
+		
+		var arr = [10,20,30,10,11,20,21]
+		var myset = new Set(arr);
+		var newArr = Array.from(myset);
+		console.log(arr,newArr);
+
+		// 创建一个空集合
+		var your_set = new Set();
+		your_set.add('lemon');
+		your_set.add('laoxie');
+		your_set.add('tiantian');
+		console.log(your_set)
+
+
+		for(let item of your_set){
+			// let [a,b] = 'laoxie'
+			console.log(item)
+		}
+
+		your_set.forEach((item,item,set)=>{
+			// item:集合中的元素
+			// set:集合的引用
+			console.log(a,b)
+		})
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
